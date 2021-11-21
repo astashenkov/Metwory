@@ -3,36 +3,52 @@
 
 'use strict'
 
-const box = document.getElementById('box');
-const circle1 = document.getElementById('circle1');
-const circle2 = document.getElementById('circle2');
-const circle3 = document.getElementById('circle3');
+const numbers = [];
+const cards = document.querySelectorAll('button');
+let statusCards = {
+    dropping: false,
+    card1: 'n',
+    card2: 'n',
+};
 
-const buttons = document.getElementsByTagName('button');
-const circles = document.getElementsByClassName('circle');
-const hearts = document.querySelectorAll('.heart');
+spreadNumbers();
 
-// buttons[1].style.color = 'orange';
-// buttons[1].style.background = 'green';
-// buttons[4].textContent = 'Hello!';
-// buttons[3].style.borderRadius = '100%'
-// buttons[3].style.background = 'blue'
-// buttons[0].style.height = '60px';
-// hearts.forEach((item, i) => {
-//     item.style.background = 'green';
-//     item.textContent = i;
-// });
-// console.log(buttons[1].textContent);
+cards.forEach((item, i) => {
+    item.addEventListener('click', () => {flipCard(i);});
+});
 
-// buttons[1].classList.add('test');
+function flipCard(i) {
+    if (statusCards.dropping) {
+        cards[statusCards.card1].style.backgroundColor = '#2962ff';
+        cards[statusCards.card1].textContent = 'Opend Card';
+        cards[statusCards.card1].style.fontSize = '20px';
+        cards[statusCards.card2].style.backgroundColor = '#2962ff';
+        cards[statusCards.card2].textContent = 'Opend Card';
+        cards[statusCards.card2].style.fontSize = '20px';
+        statusCards.card1 = 'n';
+        statusCards.card2 = 'n';
+        statusCards.dropping = false;
+    }
+    (statusCards.card1 == 'n') ? statusCards.card1 = i : statusCards.card2 = i;
+    cards[i].style.backgroundColor = 'red';
+    cards[i].textContent = `${numbers[i]}`;
+    cards[i].style.fontSize = '50px';
+    if (statusCards.card2 != 'n') {
+        if (numbers[statusCards.card1] != numbers[statusCards.card2]) {
+            statusCards.dropping = true;
+        } else {
+            statusCards.card1 = 'n';
+            statusCards.card2 = 'n';
+        }
+    }
+}
 
-let div = document.createElement('div');
-div.textContent = 'Test content';
-div.classList.add('vidClass');
-buttons[4].after(div);
-document.querySelector('.qwe').append(div);
-document.querySelector('.qwe').prepend(div);
-
-div.insertAdjacentHTML("beforebegin", '<h2>Hello!</h2>');
-// box.classList.add('test');
-console.log(circles);
+function spreadNumbers() {
+    for (let i = 0; i < 8; i++) {
+        numbers[i] = Math.floor(Math.random() * 101);
+        numbers[i+8] = numbers[i];
+    }
+    numbers.sort(function() {
+        return Math.random() - 0.5;
+    });
+}
