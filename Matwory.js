@@ -7,8 +7,8 @@ const numbers = [];
 const cards = document.querySelectorAll('button');
 let statusCards = {
     dropping: false,
-    card1: 'n',
-    card2: 'n',
+    card1: 'empty',
+    card2: 'empty',
 };
 
 spreadNumbers();
@@ -26,20 +26,20 @@ function flipCard(i) {
             cards[statusCards.card2].style.backgroundColor = '#2962ff';
             cards[statusCards.card2].textContent = 'Opend Card';
             cards[statusCards.card2].style.fontSize = '20px';
-            statusCards.card1 = 'n';
-            statusCards.card2 = 'n';
+            statusCards.card1 = 'empty';
+            statusCards.card2 = 'empty';
             statusCards.dropping = false;
         }
-        (statusCards.card1 == 'n') ? statusCards.card1 = i : statusCards.card2 = i;
+        (statusCards.card1 == 'empty') ? statusCards.card1 = i : statusCards.card2 = i;
         cards[i].style.backgroundColor = '#f44336';
         cards[i].textContent = `${numbers[i]}`;
         cards[i].style.fontSize = '50px';
-        if (statusCards.card2 != 'n') {
+        if (statusCards.card2 != 'empty') {
             if (numbers[statusCards.card1] != numbers[statusCards.card2]) {
                 statusCards.dropping = true;
             } else {
-                statusCards.card1 = 'n';
-                statusCards.card2 = 'n';
+                statusCards.card1 = 'empty';
+                statusCards.card2 = 'empty';
             }
         }
     }
