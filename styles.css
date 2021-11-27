@@ -5,6 +5,7 @@ body {
 .container {
     width: 400px;
     display: grid;
+    place-items: center;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
 }
@@ -15,13 +16,11 @@ body {
 
 button {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 20px;
     width: 100px;
     height: 100px;
     margin: 3px;
     border: none;
     border-radius: 15px;
-    background-color: #2962ff;
     color: #fff;
     cursor: pointer;
     outline: none;
@@ -38,3 +37,13 @@ h1 {
     display: flex;
     justify-content: center;
 } 
+
+.red {
+    background-color: #f44336;
+    font-size: 50px;
+}
+
+.blue {
+    background-color: #2962ff;
+    font-size: 20px;
+}
