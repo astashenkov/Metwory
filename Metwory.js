@@ -1,4 +1,4 @@
-// Matwory. My first simple web game.
+// Metwory. My first simple web game.
 
 
 'use strict'
