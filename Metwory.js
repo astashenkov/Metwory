@@ -10,6 +10,7 @@ const numbers = [],
           card1: 'empty',
           card2: 'empty',
           win: 'false',
+          counter: 0,
       };
 
 spreadNumbers();
@@ -28,6 +29,7 @@ function flipCard(i) {
             statusCards.card1 = 'empty';
             statusCards.card2 = 'empty';
             statusCards.dropping = false;
+            console.log(`Step №${++statusCards.counter}`);
         }
         (statusCards.card1 == 'empty') ? statusCards.card1 = i : statusCards.card2 = i;
         cards[i].classList = 'red';
@@ -38,6 +40,7 @@ function flipCard(i) {
             } else {
                 statusCards.card1 = 'empty';
                 statusCards.card2 = 'empty';
+                console.log(`Step №${++statusCards.counter}`);
             }
         }
         statusCards.win = 'true';
@@ -51,6 +54,7 @@ function flipCard(i) {
                 item.classList = 'green';
                 item.textContent = 'You win!'
             });
+            console.log(`Congratulations! You did it in ${statusCards.counter} steps!`);
         }
     }
 }
