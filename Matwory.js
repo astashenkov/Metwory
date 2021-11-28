@@ -4,12 +4,13 @@
 'use strict'
 
 const numbers = [],
-      cards = document.querySelectorAll('button');
-const statusCards = {
-    dropping: false,
-    card1: 'empty',
-    card2: 'empty',
-};
+      cards = document.querySelectorAll('button'),
+      statusCards = {
+          dropping: false,
+          card1: 'empty',
+          card2: 'empty',
+          win: 'false',
+      };
 
 spreadNumbers();
 
@@ -18,7 +19,7 @@ cards.forEach((item, i) => {
 });
 
 function flipCard(i) {
-    if (cards[i].classList != 'red') {
+    if (cards[i].classList != 'red' && cards[i].classList != 'green') {
         if (statusCards.dropping) {
             cards[statusCards.card1].classList = 'blue';
             cards[statusCards.card1].textContent = 'Opend Card';
@@ -28,7 +29,7 @@ function flipCard(i) {
             statusCards.card2 = 'empty';
             statusCards.dropping = false;
         }
-        (statusCards.card1 === 'empty') ? statusCards.card1 = i : statusCards.card2 = i;
+        (statusCards.card1 == 'empty') ? statusCards.card1 = i : statusCards.card2 = i;
         cards[i].classList = 'red';
         cards[i].textContent = `${numbers[i]}`;
         if (statusCards.card2 != 'empty') {
@@ -38,6 +39,18 @@ function flipCard(i) {
                 statusCards.card1 = 'empty';
                 statusCards.card2 = 'empty';
             }
+        }
+        statusCards.win = 'true';
+        cards.forEach((item) => {
+            if (item.classList == 'blue') {
+                statusCards.win = 'false';
+            }
+        });
+        if (statusCards.win == 'true') {
+            cards.forEach((item) => {
+                item.classList = 'green';
+                item.textContent = 'You win!'
+            });
         }
     }
 }

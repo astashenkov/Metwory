@@ -47,3 +47,8 @@ h1 {
     background-color: #2962ff;
     font-size: 20px;
 }
+
+.green {
+    background-color: rgb(5, 170, 32);
+    font-size: 20px;
+}
