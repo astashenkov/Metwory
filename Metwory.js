@@ -6,10 +6,9 @@
 const numbers = [],
       cards = document.querySelectorAll('button'),
       statusCards = {
-          dropping: false,
           card1: 'empty',
           card2: 'empty',
-          win: 'false',
+          win: false,
           counter: 0,
       };
 
@@ -21,35 +20,25 @@ cards.forEach((item, i) => {
 
 function flipCard(i) {
     if (cards[i].classList != 'red' && cards[i].classList != 'green') {
-        if (statusCards.dropping) {
-            cards[statusCards.card1].classList = 'blue';
-            cards[statusCards.card1].textContent = 'Opend Card';
-            cards[statusCards.card2].classList = 'blue';
-            cards[statusCards.card2].textContent = 'Opend Card';
-            statusCards.card1 = 'empty';
-            statusCards.card2 = 'empty';
-            statusCards.dropping = false;
-            console.log(`Step №${++statusCards.counter}`);
-        }
         (statusCards.card1 == 'empty') ? statusCards.card1 = i : statusCards.card2 = i;
         cards[i].classList = 'red';
         cards[i].textContent = `${numbers[i]}`;
         if (statusCards.card2 != 'empty') {
             if (numbers[statusCards.card1] != numbers[statusCards.card2]) {
-                statusCards.dropping = true;
+                setTimeout(dropping, 500);
             } else {
                 statusCards.card1 = 'empty';
                 statusCards.card2 = 'empty';
                 console.log(`Step №${++statusCards.counter}`);
             }
         }
-        statusCards.win = 'true';
+        statusCards.win = true;
         cards.forEach((item) => {
             if (item.classList == 'blue') {
-                statusCards.win = 'false';
+                statusCards.win = false;
             }
         });
-        if (statusCards.win == 'true') {
+        if (statusCards.win === true) {
             cards.forEach((item) => {
                 item.classList = 'green';
                 item.textContent = 'You win!'
@@ -67,4 +56,14 @@ function spreadNumbers() {
     numbers.sort(function() {
         return Math.random() - 0.5;
     });
+}
+
+function dropping() {
+    cards[statusCards.card1].classList = 'blue';
+    cards[statusCards.card1].textContent = 'Opend Card';
+    cards[statusCards.card2].classList = 'blue';
+    cards[statusCards.card2].textContent = 'Opend Card';
+    statusCards.card1 = 'empty';
+    statusCards.card2 = 'empty';
+    console.log(`Step №${++statusCards.counter}`);
 }
