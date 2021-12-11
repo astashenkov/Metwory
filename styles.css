@@ -3,23 +3,18 @@ body {
 }
 
 .container {
-    margin: 100px auto;
-    width: 424px;
-    display: grid;
-    place-items: center;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-}
-
-.container :nth-child(17) {
-    grid-column: 1 / 5;
+    margin: 20px auto;
+    width: 700px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 button {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     width: 100px;
     height: 100px;
-    margin: 3px;
+    margin: 2px;
     border: none;
     border-radius: 15px;
     color: #fff;
@@ -35,8 +30,6 @@ h1 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: white;
     font-size: 14px;
-    display: flex;
-    justify-content: center;
 } 
 
 .red {
