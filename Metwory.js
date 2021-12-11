@@ -12,6 +12,7 @@ const numbers = [],
           counter: 0,
       };
 
+console.log('Game Metwory by Astashenkov Viacheslav');      
 spreadNumbers();
 
 cards.forEach((item, i) => {
