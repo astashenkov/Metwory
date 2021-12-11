@@ -10,10 +10,12 @@ const numbers = [],
           card2: 'empty',
           win: false,
           counter: 0,
-      };
+      }; 
 
 console.log('Game Metwory by Astashenkov Viacheslav');      
 spreadNumbers();
+
+let timerId = setInterval(setTime, 1000);
 
 cards.forEach((item, i) => {
     item.addEventListener('click', () => {flipCard(i);});
@@ -31,7 +33,7 @@ function flipCard(i) {
                 setTimeout(dropping, 400);
             } else {
                 statusCards.card1 = statusCards.card2 = 'empty';
-                statusCards.counter++;
+                (statusCards.counter < 9) ? document.querySelector('.steps').textContent = '0' + ++statusCards.counter : document.querySelector('.steps').textContent = ++statusCards.counter;
             }
         }
 
@@ -47,7 +49,7 @@ function flipCard(i) {
                 item.classList = 'green';
                 item.textContent = 'You win!'
             });
-            console.log(`Congratulations! You did it in ${statusCards.counter} steps!`);
+            clearInterval(timerId);
         }
     }
 }
@@ -70,5 +72,24 @@ function dropping() {
     cards[statusCards.card1].classList = cards[statusCards.card2].classList = 'blue';
     cards[statusCards.card1].textContent = cards[statusCards.card2].textContent = 'Opend Card';
     statusCards.card1 = statusCards.card2 = 'empty';
-    statusCards.counter++;
+    (statusCards.counter < 9) ? document.querySelector('.steps').textContent = '0' + ++statusCards.counter : document.querySelector('.steps').textContent = ++statusCards.counter;
+}
+
+let seconds = 0,
+    minutes = 0,
+    hours = 0;
+
+function setTime() {
+    seconds++;
+    if (seconds === 60) {
+        seconds = 0;
+        minutes++;
+    }
+    if (minutes === 60) {
+        minutes = 0;
+        hours++;
+    }
+    (hours < 10) ? document.querySelector('.hours').textContent = '0' + hours : document.querySelector('.hours').textContent = hours;
+    (minutes < 10) ? document.querySelector('.minutes').textContent = '0' + minutes : document.querySelector('.minutes').textContent = minutes;
+    (seconds < 10) ? document.querySelector('.seconds').textContent = '0' + seconds : document.querySelector('.seconds').textContent = seconds;
 }

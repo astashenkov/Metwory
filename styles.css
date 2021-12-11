@@ -3,13 +3,62 @@ body {
 }
 
 .main-container {
+    margin: 20px 0px 0px 20px; 
+}
+
+.game-board {
+    margin-left: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #fff;
+    font-size: 8px;
+    width: 250px;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: left;
 }
 
+.stopwatch {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.numbers {
+    background-color: #2a2e39;
+    font-size: 60px;
+    border-radius: 15px;
+    padding: 15px;
+    margin: 5px;
+    height: 70px;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+}
+
+.text {
+    margin-top: 100px;
+    font-size: 40px;
+}
+
+.counter {
+    margin: 30px 0 100px 0;
+}
+
+.steps {
+    background-color: #2a2e39;
+    font-size: 120px;
+    border-radius: 15px;
+    padding: 12px;
+}
+
+.main-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
 .container {
-    margin: 20px auto;
+    margin: auto;
     width: 700px;
     display: flex;
     flex-wrap: wrap;
@@ -31,12 +80,6 @@ button {
 button:hover {
     transform: scale(0.97);
 }
-
-h1 {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: white;
-    font-size: 14px;
-} 
 
 .red {
     background-color: #f44336;
